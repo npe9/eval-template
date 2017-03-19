@@ -8,7 +8,9 @@ cd examples/programs
 chpl --fast quicksort.chpl -o $BIN/quicksort-$TYPE
 cd ../../
 cd test/release/examples/benchmarks/hpcc/
-chpl --fast stream-ep.chpl -o $BIN/stream-ep-$TYPE
+for i in stream stream-ep fft hpl ptrans ra-atomics; do
+	chpl --fast $i.chpl -o $BIN/$i-$TYPE
+done
 cd ../../../../../
 cd test/studies/hpcc/STREAMS/waynew/
 chpl --fast stream.chpl -o $BIN/stream-$TYPE
